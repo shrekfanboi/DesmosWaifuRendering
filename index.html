@@ -1,0 +1,48 @@
+<script src='https://www.desmos.com/api/v1.6/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6'></script>
+<html lang='en'>
+   <head>
+      <title>Desmos | Graphing Calculator</title>
+      <link rel='icon' href='https://www.desmos.com/favicon.ico'>
+   </head>
+   <div id='calculator' style='width: 100%; height: 100%;'></div>
+   <script>
+    var elt = document.getElementById('calculator');
+    var calculator = Desmos.GraphingCalculator(elt,{autosize:false});
+    calculator.setMathBounds({
+      left: -200,
+      right: 1000,
+      bottom: -200,
+      top: 1000
+    });
+    var defaultState = calculator.getState()
+
+   function renderMultipleFrame(frame){
+    calculator.setState(defaultState)
+    fetch(`http://127.0.0.1:5000/init?frame=${frame}`)
+        .then(res=>res.json())
+        .then((res)=>{
+            res['latex'].forEach((element,index) => {
+                calculator.setExpression({ id: `graph${index+1}`, latex: element, color: '#2464b4' });
+            });
+          })
+     console.log(frame++);
+     if(frame <= 580){
+       setTimeout( renderMultipleFrame,12000,frame )
+     }
+   }
+   
+   function renderFrame(){
+   fetch(`http://127.0.0.1:5000/init`)
+    .then(res=>res.json())
+    .then((res)=>{
+        res['latex'].forEach((element,index) => {
+            calculator.setExpression({ id: `graph${index+1}`, latex: element, color: '#2464b4' });
+      });
+    })
+  }
+  
+  // renderMultipleFrame(530)
+  renderFrame()
+    
+  </script>
+</html>
