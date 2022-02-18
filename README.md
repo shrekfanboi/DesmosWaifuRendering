@@ -2,7 +2,7 @@
 
 
 An attempt to render raster images in Desmos. This is a simpler version of [DesmosBezierRenderer](https://github.com/kevinjycui/DesmosBezierRenderer)
-as the latter was not working very well.
+as the latter did not work in Windows.
 
 
 
