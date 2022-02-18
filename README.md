@@ -5,7 +5,7 @@ An attempt to render raster images in Desmos. This is a simpler version of [Desm
 as the latter was not working very well.
 
 
-```
+
 List of dependencies
 
 - numpy
@@ -14,7 +14,7 @@ List of dependencies
 - Flask
 - Flask_cors
 - potracer
-```
+
 
 Put the image that you want to render inside the image directory and run main.py
 
