@@ -6,6 +6,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask import request
 import json
+import sys
 
 
 app = Flask(__name__)
@@ -57,11 +58,11 @@ def index():
 
 @app.route('/init')
 def init():
-    # frame = request.args.get('frame')
-    # print(frame)
-    # latex = get_latex(f'./frames/frame{frame}.png')
-    latex = get_latex('komi.jpg')
-    return json.dumps({'latex':latex})
+    file = sys.argv[1]
+    print(file)
+    if file:
+        latex = get_latex(f'./images/{file}')
+        return json.dumps({'latex':latex})
 
 if __name__ == '__main__':
     app.run()
