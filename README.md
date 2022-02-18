@@ -13,6 +13,7 @@ List of dependencies
 - opencv-python
 - Flask
 - Flask_cors
+- potracer
 ```
 
 Put the image that you want to render inside the image directory and run main.py
