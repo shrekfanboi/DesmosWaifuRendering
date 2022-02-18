@@ -49,7 +49,6 @@ def get_latex(file):
     return latex
         
 
-# latex = get_latex('komi.jpg')
 
 
 @app.route('/')
