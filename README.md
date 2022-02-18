@@ -19,7 +19,7 @@ List of dependencies
 Put the image that you want to render inside the image directory and run main.py
 
 ```python
-python main.py
+python main.py filename
 ```
 Then open the index.html file in any web browser and the image should be rendered within few seconds.
 
