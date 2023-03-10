@@ -2,14 +2,14 @@ import cv2 as cv
 import numpy as np
 import potrace
 import matplotlib.pyplot as plt
-from flask import Flask
+from flask import Flask,render_template
 from flask_cors import CORS
 from flask import request
 import json
 import sys
 
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder=".")
 CORS(app)
 
 
@@ -53,14 +53,14 @@ def get_latex(file):
 
 @app.route('/')
 def index():
-    return '<h3>Home</h3>'
+    return render_template("index.html")
 
 @app.route('/init')
 def init():
-    file = sys.argv[1]
-    print(file)
-    if file:
-        latex = get_latex(f'./images/{file}')
+    img_file = sys.argv[1]
+    print(f'Rendering {img_file}')
+    if img_file:
+        latex = get_latex(f'./images/{img_file}')
         return json.dumps({'latex':latex})
 
 if __name__ == '__main__':
